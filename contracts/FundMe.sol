@@ -15,7 +15,7 @@ contract FundMe {
     // if you're following along with the freecodecamp video
     // Please see https://github.com/PatrickAlphaC/fund_me
     // to get the starting solidity contract code, it'll be slightly different than this!
-    constructor(address _priceFeed) public {
+    constructor(address _priceFeed) {
         priceFeed = AggregatorV3Interface(_priceFeed);
         owner = msg.sender;
     }
@@ -90,5 +90,11 @@ contract FundMe {
             addressToAmountFunded[funder] = 0;
         }
         funders = new address[](0);
+    }
+
+    function test() public view returns (uint256) {
+        uint256 value = 0.1 * 10**18;
+
+        return value * (30 / 100);
     }
 }
